@@ -1,0 +1,44 @@
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.springframework.org/schema/security"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                    	http://www.springframework.org/schema/security
+                    	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+    <http auto-config="true" access-denied-page="/error/403" disable-url-rewriting="false" use-expressions="true">
+        <!-- filters -->
+        <intercept-url pattern="/login" access="permitAll"/>
+        <intercept-url pattern="/error/**" access="permitAll"/>
+        <intercept-url pattern="/css/**" access="permitAll"/>
+        <intercept-url pattern="/img/**" access="permitAll"/>
+        <intercept-url pattern="/js/**" access="permitAll"/>
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+        <!-- /filters -->
+
+        <!-- login -->
+        <form-login login-page="/login" authentication-failure-url="/login?access=denied"/>
+        <!-- /login -->
+
+        <!-- logout -->
+        <logout logout-url="/logout"/>
+        <!-- /logout -->
+    </http>
+
+    <beans:bean name="authentificationProvider" class="org.maven.app.security.ApplicationAuthentificationProvider"/>
+
+    <authentication-manager>
+        <authentication-provider ref="authentificationProvider">
+            <!--
+            <jdbc-user-service data-source-ref="dataSource"
+                               users-by-username-query="
+    		      select username,password, enabled 
+    		      from users where username=?"
+                               authorities-by-username-query="
+    		      select u.username, ur.authority from users u, user_roles ur 
+    		      where u.user_id = ur.user_id and u.username =? "/>
+              -->
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>

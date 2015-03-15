@@ -1,0 +1,26 @@
+.align-right,
+ul.nav.align-right
+ {
+    right: 0px;
+    left: auto;
+    position: absolute;
+}
+
+.large.container {
+    width: auto;
+}
+
+div.navbar-inner {
+    border-radius: 0px;
+}
+
+.text-blue {
+    color: #006DCC;
+    text-decoration: none;
+}
+
+.text-big {
+    margin-top: 40pt;
+    margin-bottom: 40pt;
+    font-size: 64pt;
+}

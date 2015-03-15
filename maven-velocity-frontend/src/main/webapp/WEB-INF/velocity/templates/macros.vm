@@ -1,0 +1,15 @@
+#macro(css $path $file)
+    <link href="$path$file" rel="stylesheet"/>
+#end
+
+#macro(js $path $file)
+    <script src="$path$file"></script>
+#end
+
+#macro(link $path $file $rel $sizes)
+    <link rel="$rel" sizes="$sizes" href="$path$file"/>
+#end
+
+#macro(translate $key)
+
+#end

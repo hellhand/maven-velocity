@@ -1,0 +1,14 @@
+#css(${path.getPath()} "/css/bootstrap-login.css")
+
+<form class="form-signin" method="post" action="j_spring_security_check">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <input type="text" class="input-block-level" placeholder="Email address" name="j_username"/>
+    <input type="password" class="input-block-level" placeholder="Password" name="j_password"/>
+    <label class="checkbox">
+        <input type="checkbox" value="remember-me"> Remember me </input>
+    </label>
+    <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+    #if (${data.access-error})
+        <label class="text-error">${translator.translate("access.denied")}</label>
+    #end
+</form>
